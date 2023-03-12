@@ -1,0 +1,4 @@
+test_videos/
+*.mp4
+thumbs
+__pycache__
