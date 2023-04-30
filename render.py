@@ -55,23 +55,3 @@ def create_mobile_video(background_file, content_file, facecam_file, output_file
 
     cmd = f"ffmpeg -y {input_args} -filter_complex '{filter_complex}' -r {fps} -c:v libx264 -pix_fmt yuv420p {output_file}"
     subprocess.run(cmd, shell=True)
-
-
-if __name__ == "__main__":
-
-    background_file = "./FinalResult/inputBackground.mp4"
-    content_file = "./FinalResult/inputContent.mp4"
-    facecam_file = "./FinalResult/inputFacecam.mp4"
-    output_file = "./FinalResult/output.mp4"
-
-    try:
-        os.remove(output_file)
-    except OSError:
-        pass
-
-    # create_mobile_video(background_file, content_file, facecam_file, output_file)
-    create_blurred_mobile_video(background_file, content_file, output_file)
-
-    print("Done!")
-
-    # delete all the video files
