@@ -5,7 +5,8 @@ import os
 def extract_resolution(input_file: str) -> tuple[int]:
     cmd = f"ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 {input_file}"
     output = subprocess.run(cmd, shell=True, capture_output=True)
-    width, height = output.stdout.decode().split('x')
+    output = output.stdout.decode()
+    width, height = output.split('x')
     return int(width), int(height)
 
 
