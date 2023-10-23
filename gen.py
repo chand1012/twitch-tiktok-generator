@@ -1,6 +1,8 @@
 import os
 
 import fire
+
+from dl import download
 from facial_detection import facial_detection, draw_box
 from render import crop_video, extract_resolution, blur_video, create_mobile_video
 
@@ -33,6 +35,13 @@ class TikTokGenerator:
         blur_video(path, 'output.mp4', blur)
 
     def generate(self, path: str, output: str = 'output', fd_fps: int = 1, blur: int = 20, width=720, height=1280, no_facecam: bool = False, fps: int = 60, x_offset: int = 0, y_offset: int = 0):
+        if path.startswith('http'):
+            path = download(path, '.')
+            # if there is a space in the filename, rename
+            if ' ' in path:
+                new_path = path.replace(' ', '_')
+                os.rename(path, new_path)
+                path = new_path
         if height % 2 != 0:
             height -= 1
         if width % 2 != 0:

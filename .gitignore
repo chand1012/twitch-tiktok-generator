@@ -2,3 +2,5 @@ test_videos/
 *.mp4
 thumbs
 __pycache__
+*.mov
+.DS_Store

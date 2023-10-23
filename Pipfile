@@ -7,6 +7,7 @@ name = "pypi"
 numpy = "*"
 opencv-python = "*"
 fire = "*"
+yt-dlp = "*"
 
 [dev-packages]
 autopep8 = "*"
